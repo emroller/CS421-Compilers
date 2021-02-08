@@ -25,27 +25,30 @@ import qualified Prelude as P
 --- ---------
 
 --- ### mytake : takes the first n elements of a list, or the whole list if there are not n elements
-
+-- help from http://learnyouahaskell.com/recursion
 mytake :: Int -> [a] -> [a]
 mytake n _
     | n <= 0 = []
 mytake _ [] = []
 mytake n (x:xs) = x : mytake (n-1) xs
 
---- ### mydrop
 
--- don't forget to put the type declaration or you will lose points!
-mydrop = undefined
+--- ### mydrop
+mydrop :: Int -> [a] -> [a]
+mydrop _ [] = []
+mydrop n (x:xs)
+    | n > 0        = mydrop(n-1) xs
+    | otherwise    = x:xs
 
 --- ### rev
-
--- don't forget to put the type declaration or you will lose points!
-rev = undefined
+-- from haskell source code https://downloads.haskell.org/~ghc/6.12.1/docs/html/libraries/base-4.2.0.0/src/GHC-List.html#reverse
+rev :: [a] -> [a]
+rev = P.foldl (flip (:)) []
 
 --- ### app
-
--- don't forget to put the type declaration or you will lose points!
-app = undefined
+app :: [a] -> [a] -> [a] 
+app [] b = b
+app (x:xs) ys = x: (app xs ys)
 
 --- ### inclist
 
