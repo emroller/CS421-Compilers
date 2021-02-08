@@ -24,10 +24,13 @@ import qualified Prelude as P
 --- Recursion
 --- ---------
 
---- ### mytake
+--- ### mytake : takes the first n elements of a list, or the whole list if there are not n elements
 
--- don't forget to put the type declaration or you will lose points!
-mytake = undefined
+mytake :: Int -> [a] -> [a]
+mytake n _
+    | n <= 0 = []
+mytake _ [] = []
+mytake n (x:xs) = x : mytake (n-1) xs
 
 --- ### mydrop
 
