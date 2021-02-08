@@ -51,72 +51,70 @@ app [] b = b
 app (x:xs) ys = x: (app xs ys)
 
 --- ### inclist
-
--- don't forget to put the type declaration or you will lose points!
-inclist = undefined
+inclist :: Num a => [a] -> [a]
+inclist [] = []
+inclist (x:xs) = (x+1):inclist xs
 
 --- ### sumlist
-
--- don't forget to put the type declaration or you will lose points!
-sumlist = undefined
+sumlist :: Num a => [a] -> a
+sumlist [] = 0
+sumlist [x] = x
+sumlist(x:xs) = x + sumlist xs
 
 --- ### myzip
-
--- don't forget to put the type declaration or you will lose points!
-myzip = undefined
+-- https://hackage.haskell.org/package/base-4.14.1.0/docs/src/GHC.List.html#zip
+myzip :: [a] -> [b] -> [(a,b)]
+myzip [] b = []
+myzip a [] = []
+myzip (a:as) (b:bs) = (a,b):myzip as bs
 
 --- ### addpairs
-
--- don't forget to put the type declaration or you will lose points!
+addpairs :: (Num a) => [a] -> [a] -> [a]
 addpairs = undefined
+--addpairs [] = 0
+--d = myzip xs ys
+--addpairs (xs) (ys) = b where b = x + y where myzip 
+-- addpairs xs ys = sum $ myzip xs ys
 
 --- ### ones
-
--- don't forget to put the type declaration or you will lose points!
-ones = undefined
+-- help from https://www.techrepublic.com/article/infinite-list-tricks-in-haskell/
+ones :: [Integer]
+ones = 1 : P.map (+0) ones
 
 --- ### nats
-
--- don't forget to put the type declaration or you will lose points!
-nats = undefined
+nats :: [Integer]
+nats = 0 : P.map (+1) nats
 
 --- ### fib
-
--- don't forget to put the type declaration or you will lose points!
+fib :: [Integer]
 fib = undefined
 
 --- Set Theory
 --- ----------
 
 --- ### add
-
--- don't forget to put the type declaration or you will lose points!
+add :: Ord a => a -> [a] -> [a]
 add = undefined
 
 --- ### union
-
--- don't forget to put the type declaration or you will lose points!
+union :: Ord a => [a] -> [a] -> [a]
 union = undefined
 
 --- ### intersect
-
--- don't forget to put the type declaration or you will lose points!
+intersect :: Ord a => [a] -> [a] -> [a]
 intersect = undefined
 
 --- ### powerset
-
--- don't forget to put the type declaration or you will lose points!
+powerset :: Ord a => [a] -> [[a]]
 powerset = undefined
 
 --- Higher Order Functions
 --- ----------------------
 
 --- ### inclist'
-
--- don't forget to put the type declaration or you will lose points!
+inclist' :: Num a => [a] -> [a]
 inclist' = undefined
 
 --- ### sumlist'
-
--- don't forget to put the type declaration or you will lose points!
+sumlist' :: (Num a) => [a] -> a 
 sumlist' = undefined
