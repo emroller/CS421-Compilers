@@ -3,6 +3,7 @@
 
 --- Relevant Files
 --- --------------
+{-# OPTIONS_GHC -Wno-deferred-type-errors #-}
 
 module Lib where
 
@@ -48,12 +49,11 @@ rev = P.foldl (flip (:)) []
 --- ### app
 app :: [a] -> [a] -> [a] 
 app [] b = b
-app (x:xs) ys = x: (app xs ys)
+app (x:xs) ys = x: app xs ys
 
 --- ### inclist
 inclist :: Num a => [a] -> [a]
-inclist [] = []
-inclist (x:xs) = (x+1):inclist xs
+inclist = P.map (+1)
 
 --- ### sumlist
 sumlist :: Num a => [a] -> a
@@ -70,11 +70,10 @@ myzip (a:as) (b:bs) = (a,b):myzip as bs
 
 --- ### addpairs
 addpairs :: (Num a) => [a] -> [a] -> [a]
-addpairs = undefined
---addpairs [] = 0
---d = myzip xs ys
---addpairs (xs) (ys) = b where b = x + y where myzip 
--- addpairs xs ys = sum $ myzip xs ys
+addpairs xs ys = myadd (myzip xs ys) where 
+    myadd [] = []
+    myadd ((x,y) : xs) = (x+y) : myadd xs
+
 
 --- ### ones
 -- help from https://www.techrepublic.com/article/infinite-list-tricks-in-haskell/
@@ -87,34 +86,49 @@ nats = 0 : P.map (+1) nats
 
 --- ### fib
 fib :: [Integer]
-fib = undefined
+fib = 0 : 1 : addpairs fib (tail fib)
 
 --- Set Theory
 --- ----------
 
 --- ### add
 add :: Ord a => a -> [a] -> [a]
-add = undefined
+add a [] = [a]
+add a (x:xs)
+    | a == x     = x:xs
+    | a < x     = a:x:xs
+    | otherwise = x : add a xs
 
 --- ### union
 union :: Ord a => [a] -> [a] -> [a]
-union = undefined
+union [] [] = []
+union a [] = a
+union [] b = b
+union (x:xs) (y:ys) 
+    | x == y    = x:union xs ys
+    | x < y     = x:union xs (y:ys)
+    | otherwise = y:union (x:xs) ys 
 
 --- ### intersect
 intersect :: Ord a => [a] -> [a] -> [a]
-intersect = undefined
+intersect [] [] = []
+intersect a [] = []
+intersect [] b = []
+-- https://stackoverflow.com/questions/5986898/is-there-union-and-intersect-haskell-prelude-implementation
+intersect as bs = let ns = [ a | a <- as, a `elem` bs] in [ b | b <- bs, b `elem` ns]
 
 --- ### powerset
 powerset :: Ord a => [a] -> [[a]]
-powerset = undefined
+powerset [] = [[]]
+powerset (x:xs) = powerset xs `union` P.map (x:) (powerset xs)
 
 --- Higher Order Functions
 --- ----------------------
 
 --- ### inclist'
 inclist' :: Num a => [a] -> [a]
-inclist' = undefined
+inclist' = P.map (+1)
 
 --- ### sumlist'
 sumlist' :: (Num a) => [a] -> a 
-sumlist' = undefined
+sumlist' = P.foldl (+) 0
