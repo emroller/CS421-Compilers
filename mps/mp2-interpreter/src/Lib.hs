@@ -84,6 +84,8 @@ compOps = H.fromList [ ("<", (<))
 --- -----------------
 
 liftIntOp :: (Int -> Int -> Int) -> Val -> Val -> Val
+-- TODO: does this have to be handled in eval?
+liftIntOp div _ (IntVal 0) = ExnVal "Division by 0"
 liftIntOp op (IntVal x) (IntVal y) = IntVal $ op x y
 liftIntOp _ _ _ = ExnVal "Cannot lift"
 
@@ -102,26 +104,46 @@ eval :: Exp -> Env -> Val
 
 --- ### Constants
 
-eval (IntExp i)  _ = undefined
-eval (BoolExp i) _ = undefined
+eval (IntExp i)  _ = IntVal i
+eval (BoolExp i) _ = BoolVal i
 
 --- ### Variables
 
-eval (VarExp s) env = undefined
+-- eval (VarExp var) env =
+    --let Just v = lookup var env
+    -- in v
+eval (VarExp s) env = case H.lookup s env of
+        Just j -> j
+        Nothing -> ExnVal "No match in env"
 
 --- ### Arithmetic
-
-eval (IntOpExp op e1 e2) env = undefined
+eval (IntOpExp op e1 e2) env = 
+    let v1 = eval e1 env
+        v2 = eval e2 env
+        Just f = H.lookup op intOps
+    in liftIntOp f v1 v2
 
 --- ### Boolean and Comparison Operators
 
-eval (BoolOpExp op e1 e2) env = undefined
+eval (BoolOpExp op e1 e2) env =
+    let v1 = eval e1 env
+        v2 = eval e2 env
+        Just f = H.lookup op boolOps
+    in liftBoolOp f v1 v2
 
-eval (CompOpExp op e1 e2) env = undefined
-
+eval (CompOpExp op e1 e2) env =
+    let v1 = eval e1 env
+        v2 = eval e2 env
+        Just f = H.lookup op compOps
+    in liftCompOp f v1 v2
 --- ### If Expressions
 
-eval (IfExp e1 e2 e3) env = undefined
+-- help from https://stackoverflow.com/questions/28785355/creating-an-interpreter-in-haskell :)
+eval (IfExp e1 e2 e3) env = do
+    case eval e1 env of
+        BoolVal True -> eval e2 env
+        BoolVal False -> eval e3 env
+        _ -> ExnVal "Condition is not a Bool"
 
 --- ### Functions and Function Application
 
