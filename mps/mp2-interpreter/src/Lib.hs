@@ -147,7 +147,7 @@ eval (IfExp e1 e2 e3) env = do
 
 --- ### Functions and Function Application
 
-eval (FunExp params body) env = undefined
+eval (FunExp params body) env = CloVal params body env
 
 eval (AppExp e1 args) env = undefined
 
@@ -167,18 +167,25 @@ exec (PrintStmt e) penv env = (val, penv, env)
 
 --- ### Set Statements
 
-exec (SetStmt var e) penv env = undefined
+exec (SetStmt var e) penv env = ("", penv, H.insert var (eval e env) env)
 
 --- ### Sequencing
 
-exec (SeqStmt []) penv env = undefined
+exec (SeqStmt []) penv env = ("", penv, env)
+exec (SeqStmt (x:xs)) penv env = (x1 ++ x2, penv2, env2)
+    where (x1, penv1, env1) = exec x penv env
+          (x2, penv2, env2) = exec (SeqStmt xs) penv1 env1
 
 --- ### If Statements
 
-exec (IfStmt e1 s1 s2) penv env = undefined
+exec (IfStmt e1 s1 s2) penv env = do
+    case eval e1 env of
+        BoolVal True  -> exec s1 penv env
+        BoolVal False -> exec s2 penv env
+        _  -> (show (ExnVal "Condition is not a Bool") , penv, env)
 
 --- ### Procedure and Call Statements
 
-exec p@(ProcedureStmt name args body) penv env = undefined
+exec p@(ProcedureStmt name args body) penv env = ("", H.insert name p penv, env)
 
 exec (CallStmt name args) penv env = undefined
