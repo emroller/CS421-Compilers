@@ -84,8 +84,6 @@ compOps = H.fromList [ ("<", (<))
 --- -----------------
 
 liftIntOp :: (Int -> Int -> Int) -> Val -> Val -> Val
--- TODO: does this have to be handled in eval?
-liftIntOp div _ (IntVal 0) = ExnVal "Division by 0"
 liftIntOp op (IntVal x) (IntVal y) = IntVal $ op x y
 liftIntOp _ _ _ = ExnVal "Cannot lift"
 
@@ -121,7 +119,9 @@ eval (IntOpExp op e1 e2) env =
     let v1 = eval e1 env
         v2 = eval e2 env
         Just f = H.lookup op intOps
-    in liftIntOp f v1 v2
+    in case (op, v2) of
+        ("/", IntVal 0) -> ExnVal "Division by 0"
+        _ -> liftIntOp f v1 v2
 
 --- ### Boolean and Comparison Operators
 
@@ -149,12 +149,20 @@ eval (IfExp e1 e2 e3) env = do
 
 eval (FunExp params body) env = CloVal params body env
 
-eval (AppExp e1 args) env = undefined
+eval (AppExp e1 args) env =
+    let
+        clo = eval e1 env
+        args2 = map (`eval` env) args
+    in case clo of 
+        (CloVal s f e) -> eval f (H.union (H.fromList (zip s args2)) e)
+        _ -> ExnVal "Apply to non-closure"
+
 
 --- ### Let Expressions
 
-eval (LetExp pairs body) env = undefined
-
+eval (LetExp pairs body) env =
+    let vals = H.fromList $ map(\(key,val) -> (key, eval val env)) pairs 
+        in eval body (H.union vals env)
 --- Statements
 --- ----------
 
@@ -188,4 +196,8 @@ exec (IfStmt e1 s1 s2) penv env = do
 
 exec p@(ProcedureStmt name args body) penv env = ("", H.insert name p penv, env)
 
-exec (CallStmt name args) penv env = undefined
+exec (CallStmt name args) penv env = do
+    case H.lookup name penv of  
+        Just (ProcedureStmt name ys c) -> exec c penv (H.union (H.fromList (zip ys (map (`eval` env) args))) env)
+        Nothing -> ("Procedure " ++ name ++ " undefined", penv, env)
+
