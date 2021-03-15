@@ -1,0 +1,25 @@
+Learning Module               Outcome (LM points)                                              Assessment (LM points)               
+----------------------------- ---------------------------------------------------------------- -------------------------------------
+1. Recursion                  1. Write a recursive function over integers (2)                  Recursion Activity problem 1 (2)     
+                              2. Write a mapping recursive function over lists (2)             Recursion Activity problem 2 (2)     
+                              3. Write a folding recursive function over lists (2)             Recursion Activity problem 3 (2)     
+                              4. Write a tail recursive function (2)                           Exam 1 - Tail Recursion (2)          
+                              5. Indicate an advantage of tail recursion over direct style (2) Exam 1 - Tail Recursion Advantage (2)
+----------------------------- ---------------------------------------------------------------- -------------------------------------
+2. Algebraic Data Types       1. Write a datatype declaration (2)                              MP 1 (2)                             
+                              2. Consume a recursive datatype (2)                              ADT Activity (2)                     
+                              3. Transform a recursive datatype (3)                            Exam 1 - Algebraic Data Types (3)    
+                              4. Produce a recursive datatype (3)                              MP 1 (3)                             
+----------------------------- ---------------------------------------------------------------- -------------------------------------
+3. Higher Order Functions     1. Using HOFs (5)                                                Exam 1 - Using HOFs (5)              
+                              2. Writing HOFs (5)                                              Exam 1 - Writing HOFs (3)            
+                                                                                               HOF Activity (2)
+----------------------------- ---------------------------------------------------------------- -------------------------------------
+4. Interpreters (Expressions) 1. Write data type for eval (2)                                  MP 2 (2)                             
+                              2. Write a lifting function (4)                                  MP 2 (4)                             
+                              3. Write an eval clause from semantics (4)                       MP 2 (4)                             
+----------------------------- ---------------------------------------------------------------- -------------------------------------
+5. Interpreters (Functions)   1. Use eval to create a closure (4)                              MP 2 (4)                             
+                              2. Use eval to apply a function (4)                              MP 2 (4)                             
+                              3. Show why closure environment is needed. (2)                   Exam 2 - Why Closure Environment (2) 
+                              4. Show difference between procedure and function (2)            Exam 2 - Procedure vs Function (2)   
