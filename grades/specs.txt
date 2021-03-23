@@ -1,25 +1,62 @@
-Learning Module               Outcome (LM points)                                              Assessment (LM points)               
------------------------------ ---------------------------------------------------------------- -------------------------------------
-1. Recursion                  1. Write a recursive function over integers (2)                  Recursion Activity problem 1 (2)     
-                              2. Write a mapping recursive function over lists (2)             Recursion Activity problem 2 (2)     
-                              3. Write a folding recursive function over lists (2)             Recursion Activity problem 3 (2)     
-                              4. Write a tail recursive function (2)                           Exam 1 - Tail Recursion (2)          
-                              5. Indicate an advantage of tail recursion over direct style (2) Exam 1 - Tail Recursion Advantage (2)
------------------------------ ---------------------------------------------------------------- -------------------------------------
-2. Algebraic Data Types       1. Write a datatype declaration (2)                              MP 1 (2)                             
-                              2. Consume a recursive datatype (2)                              ADT Activity (2)                     
-                              3. Transform a recursive datatype (3)                            Exam 1 - Algebraic Data Types (3)    
-                              4. Produce a recursive datatype (3)                              MP 1 (3)                             
------------------------------ ---------------------------------------------------------------- -------------------------------------
-3. Higher Order Functions     1. Using HOFs (5)                                                Exam 1 - Using HOFs (5)              
-                              2. Writing HOFs (5)                                              Exam 1 - Writing HOFs (3)            
-                                                                                               HOF Activity (2)
------------------------------ ---------------------------------------------------------------- -------------------------------------
-4. Interpreters (Expressions) 1. Write data type for eval (2)                                  MP 2 (2)                             
-                              2. Write a lifting function (4)                                  MP 2 (4)                             
-                              3. Write an eval clause from semantics (4)                       MP 2 (4)                             
------------------------------ ---------------------------------------------------------------- -------------------------------------
-5. Interpreters (Functions)   1. Use eval to create a closure (4)                              MP 2 (4)                             
-                              2. Use eval to apply a function (4)                              MP 2 (4)                             
-                              3. Show why closure environment is needed. (2)                   Exam 2 - Why Closure Environment (2) 
-                              4. Show difference between procedure and function (2)            Exam 2 - Procedure vs Function (2)   
+Learning Module               Outcome (LM points)                                              Assessment (LM points)                            
+----------------------------- ---------------------------------------------------------------- --------------------------------------------------
+1. Recursion                  1. Write a recursive function over integers (2)                  Recursion Activity problem 1 (2)                  
+                              2. Write a mapping recursive function over lists (2)             Recursion Activity problem 2 (2)                  
+                              3. Write a folding recursive function over lists (2)             Recursion Activity problem 3 (2)                  
+                              4. Write a tail recursive function (2)                           Exam 1 - Tail Recursion (2)                       
+                              5. Indicate an advantage of tail recursion over direct style (2)                                                   
+----------------------------- ---------------------------------------------------------------- --------------------------------------------------
+2. Algebraic Data Types       1. Write a datatype declaration (2)                              MP 1 (2)                                          
+                              2. Consume a recursive datatype (2)                              ADT Activity (2)                                  
+                              3. Transform a recursive datatype (3)                            Exam 1 - Algebraic Data Types (3)                 
+                              4. Produce a recursive datatype (3)                              MP 1 (3)                                          
+----------------------------- ---------------------------------------------------------------- --------------------------------------------------
+3. Higher Order Functions     1. Using HOFs (5)                                                Exam 1 - Using HOFs (5)                           
+                              2. Writing HOFs (5)                                              Fixpoint Activity (2)                             
+                                                                                               Exam 1 - Writing HOFs (3)                         
+----------------------------- ---------------------------------------------------------------- --------------------------------------------------
+4. Interpreters (Expressions) 1. Write data type for eval (2)                                  MP 2 (2)                                          
+                              2. Write a lifting function (4)                                  MP 2 (4)                                          
+                              3. Write an eval clause from semantics (4)                       MP 2 (4)                                          
+----------------------------- ---------------------------------------------------------------- --------------------------------------------------
+5. Interpreters (Functions)   1. Use eval to create a closure (4)                              MP 2 (4)                                          
+                              2. Use eval to apply a function (4)                              MP 2 (4)                                          
+                              3. Show why closure environment is needed. (2)                   Exam 2 - Why Closure Environment (2)              
+                              4. Show difference between procedure and function (2)            Exam 2 - Procedure vs Function (2)                
+----------------------------- ---------------------------------------------------------------- --------------------------------------------------
+6. Lambda Calculus            1. Reduce a lambda-calculus expression (10)                      Lambda Calculus Activity (3)                      
+                                                                                               Exam 1 - Lambda Calculus (7)                      
+----------------------------- ---------------------------------------------------------------- --------------------------------------------------
+7. Evaluation Semantics       1. Write a big step semantics proof tree. (3)                    Exam 1 - Big Step Semantics (3)                   
+                              2. Write an eval clause given a big step rule. (2)               MP 2 (2)                                          
+                              3. Show a small step semantics reduction sequence. (3)                                                             
+                              4. Identify a system having the Church-Rosser propery. (2)                                                         
+----------------------------- ---------------------------------------------------------------- --------------------------------------------------
+11. Type Classes and Monads   1. Implement the Eq or Ord typeclass (2)                         Typeclass Activity (2)                            
+                              2. Implement the Functor typeclass (2)                           Typeclass Activity (1)                            
+                                                                                               Exam 2 - Implement a Functor (1)                  
+                              3. Implement the Applicative typeclass (3)                       Typeclass Activity (1)                            
+                                                                                               Exam 2 - Implement an Applicative (2)             
+                              4. Implement the Monad typeclass (4)                             Typeclass Activity (1)                            
+                                                                                               Exam 2 - Implement a Monad (3)                    
+----------------------------- ---------------------------------------------------------------- --------------------------------------------------
+12. Grammars                  1. Identifiy grammar properties (1)                              Grammar Activity (1)                              
+                              2. Demonstrate that a grammar is ambiguous (3)                   Grammar Activity (1)                              
+                                                                                               Exam 2 - Prove Grammar Ambiguity (2)              
+                              3. Stratify a grammar (2)                                        Grammar Activity (2)                              
+                              4. Calculate FIRST and FOLLOW sets (4)                           Grammar Activity (2)                              
+                                                                                               Exam 2 - FIRST and FOLLOW sets (2)                
+----------------------------- ---------------------------------------------------------------- --------------------------------------------------
+13. Regular Languages         1. Show an equivalent right linear grammar (4)                   Exam 2 - Select Right Linear Grammar (4)          
+                              2. Given a pattern, provide a regular expression (4)             Regular Languages Activity (4)                    
+                              3. Indicate limits or capabilities of regular languages (2)      Exam 2 - Which Languages are Regular (2)          
+----------------------------- ---------------------------------------------------------------- --------------------------------------------------
+14. LL Parsing                1. Write an LL Parser in Haskell (4)                             LL Activity (2)                                   
+                                                                                               Exam 2 - LL Parser (2)                            
+                              2. Convert a Grammar to LL (6)                                   LL Activity (3)                                   
+                                                                                               Exam 2 - Convert Grammar to LL (3)                
+----------------------------- ---------------------------------------------------------------- --------------------------------------------------
+15. LR Parsing                1. Identify Location of Shift/Reduce Conflict (3)                Exam 2 - Locate Shift/Reduce Conflict (3)         
+                              2. Identify Significance of Shift/Reduce Conflict (2)            Exam 2 - Significance of Shift/Reduce Conflict (2)
+                              3. Produce LR Item Sets and Automata (5)                         LR Activity (2)                                   
+                                                                                               Exam 2 - LR Item Sets (3)                         
