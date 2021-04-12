@@ -52,10 +52,11 @@ Learning Module               Outcome (LM points)                               
                                                                                                Exam 2 - Implement a Monad (3)                 
 ----------------------------- ---------------------------------------------------------------- -----------------------------------------------
 12. Grammars                  2. Demonstrate that a grammar is ambiguous (5)                   Exam 2 - Prove Grammar Ambiguity (5)           
+                                                                                               Grammar Activity (3)
                               4. Calculate FIRST and FOLLOW sets (5)                           Exam 2 - Select First and Follow Sets (v2) (5) 
+                                                                                               Grammar Activity (3)
 ----------------------------- ---------------------------------------------------------------- -----------------------------------------------
-13. Regular Languages         1. Show an equivalent right linear grammar (4)                   Exam 2 - Regular Expression to Right Linear (4)
-                                                                                               Exam 2 - Select Right Linear Grammar (4)       
+13. Regular Languages         1. Show an equivalent right linear grammar (6)                   Exam 2 - Select Right Linear Grammar (6)       
                               2. Given a pattern, provide a regular expression (4)             Regular Languages Activity (4)                 
                               3. Indicate limits or capabilities of regular languages (2)      Exam 2 - Which Languages are Regular (2)       
 ----------------------------- ---------------------------------------------------------------- -----------------------------------------------
