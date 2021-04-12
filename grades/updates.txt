@@ -1,3 +1,6 @@
+2021-04-12          - Exam 2 scores entered
+                    - LM 9 and 17 Dropped!  LM cutoffs will be adjusted accordingly.  E.g. 16 for an A, 14 for a B, etc.
+                    - You will also be allowed to drop one MP.
 2021-03-23          - Remaining Exam 1 Scores entered, LMs through Exam 2 speced
 2021-03-15          - Fixed "Exam 1 - Transform a recursive datatype" scores.
 2021-03-14 (Pi Day) - First release of the grading script!  LMs 1-5 are added.  LMs 6-11 should be up in the next few days.
