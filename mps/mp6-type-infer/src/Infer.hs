@@ -9,7 +9,13 @@ import Data.Map.Strict as H (Map, insert, lookup, empty, fromList, singleton)
   {- question 1: fresh instance function -}
 
 freshInst :: PolyTy -> Infer MonoTy
-freshInst (Forall qVars tau) = undefined
+freshInst (Forall [] tau)           = return tau
+freshInst (Forall _ (TyVar i))      = return (TyVar i)
+freshInst (Forall (x:xs) tau) = 
+  do t <- freshTau
+     let newtau = apply (substInit x t) tau
+     freshInst (Forall xs newtau)
+
 
   {- question 2: occurs check -}
 
