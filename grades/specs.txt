@@ -61,7 +61,7 @@
 6. Lambda Calculus
    1. Reduce a lambda-calculus expression (10)
       - Exam 1 - Lambda Calculus (10)
-      - Lambda Calculus Activity (3)
+      - Lambda Calculus Activity (8)
 
 7. Evaluation Semantics
    1. Write a big step semantics proof tree. (3)

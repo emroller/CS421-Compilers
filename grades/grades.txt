@@ -24,8 +24,8 @@ Learning Module               Outcome (LM points)                               
                               3. Show why closure environment is needed. (2)                   Exam 2 - Closures (v2)                           x 0.00 (0)              
                               4. Show difference between procedure and function (2)            Exam 2 - Procedure vs Function (v3)              100.0 (2.00)            
 ----------------------------- ---------------------------------------------------------------- ------------------------------------------------ ------------------------
-6. Lambda Calculus            1. Reduce a lambda-calculus expression (10)                      Lambda Calculus Activity                         100.0 (3.00)            
-                                                                                               Exam 1 - Lambda Calculus (v1)                    100.0 (7.00)            
+6. Lambda Calculus            1. Reduce a lambda-calculus expression (10)                      Lambda Calculus Activity                         100.0 (8.00)            
+                                                                                               Exam 1 - Lambda Calculus (v1)                    100.0 (10.00)           
 ----------------------------- ---------------------------------------------------------------- ------------------------------------------------ ------------------------
 7. Evaluation Semantics       3. Show a small step semantics reduction sequence. (5)           Small Step Activity                              100.0 (5.00)            
                               1. Write a big step semantics proof tree. (3)                    Exam 1 - Big Step Semantics (v1)                 100.0 (3.00)            
