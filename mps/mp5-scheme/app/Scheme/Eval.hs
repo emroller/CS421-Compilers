@@ -121,11 +121,29 @@ eval expr@(Pair v1 v2) = case flattenList expr of
 
     -- cond
     -- TODO: Handle `cond` here. Use pattern matching to match the syntax
+    --evalList 
+      evalList ((Symbol "cond"):rest0) = evalcond rest0 where
+        evalcond [] = invalidSpecialForm "cond"
+        evalcond (ce:rest1) = do (c1,e1) <- getListOf2 ce
+                                 case c1 of 
+                                  Symbol "else" -> if length rest1 == 0
+                                                   then eval e1
+                                                   else invalidSpecialForm "cond"
+                                  _ -> do c1val <- eval c1
+                                          case c1val of
+                                            Boolean False -> if length rest1 == 0
+                                                             then return Void
+                                                             else evalcond rest1
+                                            _ -> eval e1
 
-    evalList [Symbol "cond", e]
-    -- let
     -- TODO: Handle `let` here. Use pattern matching to match the syntax
-
+    evalList [Symbol "let", Pair (Symbol fname) args, body] =
+      do env <- get 
+         nargs <- mapM getBinding args 
+         mapM_ (\(k,v) -> modify $ H.insert k v) nargs
+         val <- eval body
+         put env
+         return val
     -- lambda
     -- TODO: Handle `lambda` here. Use pattern matching to match the syntax
 
@@ -140,6 +158,11 @@ eval expr@(Pair v1 v2) = case flattenList expr of
     -- define variable
     -- TODO: Handle `define` for variables here. Use pattern matching
     -- to match the syntax
+    evalList [Symbol "define", Symbol vname, body] = 
+        do val <- eval body 
+           modify $ H.insert vname val
+           return Void
+
 
     -- define-macro
     -- TODO: Handle `define-macro` here. Use pattern matching to match
@@ -148,10 +171,20 @@ eval expr@(Pair v1 v2) = case flattenList expr of
     -- invalid use of keyword, throw a diagnostic
     evalList (Symbol sym : _) | elem sym keywords = invalidSpecialForm sym
 
-    -- application
-    evalList (fexpr:args) =
-      do f <- eval fexpr
-         apply f args
+   -- application
+    evalList (fexpr:args) = eval fexpr >>= aux where
+      -- Macro expansion
+      -- TODO: implement macro evaluation
+      -- Use do-notation!
+      aux (Macro fmls body) | length fmls == length args = 
+        do env <- get 
+           mapM_ (\(k,v) -> modify $ H.insert k v) (zip fmls args)
+           val <- eval body
+           put env
+           eval val
+      aux f = do nargs <- mapM eval args
+                 apply f nargs
+
 
 eval val = throwError $ InvalidExpression val
 
