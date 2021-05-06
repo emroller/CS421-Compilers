@@ -79,7 +79,7 @@
       - Monotype Proof Tree Activity (5)
 
    2. Write a polytype proof tree (5)
-      - Exam 3 - Polytype Proof Tree (5)
+      - Polytype Proof Tree Activity (5)
 
    3. Implement a type inferencer (5)
       - MP 6 (5)
