@@ -1,3 +1,4 @@
+2021-05-06          - Typeclass activity scores updated
 2021-05-06          - Reading Day Grade Updates
 2021-05-03          - Lambda Caclulus score tweaks
 2021-05-02          - Latest update
