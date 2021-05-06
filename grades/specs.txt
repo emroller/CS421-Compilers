@@ -122,8 +122,8 @@
       - Grammar Activity (3)
 
 13. Regular Languages
-   1. Show an equivalent right linear grammar (6)
-      - Exam 2 - Select Right Linear Grammar (6)
+   1. Show an equivalent right linear grammar (4)
+      - Exam 2 - Select Right Linear Grammar (4)
 
    2. Given a pattern, provide a regular expression (4)
       - Regular Languages Activity (4)
